@@ -1,18 +1,16 @@
-import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
-import './App.css';
+import React from 'react'
+import Footer from '../../components/Footer'
+import AddTodo from '../../containers/AddTodo'
+import VisibleTodoList from '../../containers/VisibleTodoList'
+import Count from '../../containers/Count'
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        Hello {this.props.name}
+const App = () => (
+  <div>
+    <AddTodo />
+    <VisibleTodoList />
+    <Count />
+    <Footer />
+  </div>
+)
 
-        <Link to="/hello">Hello</Link>
-        <Link to="/timer">Timer</Link>
-      </div>
-    )
-  }
-}
-
-export default withRouter(App);
+export default App
