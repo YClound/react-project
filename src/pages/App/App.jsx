@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer'
 import AddTodo from '../../containers/AddTodo'
 import VisibleTodoList from '../../containers/VisibleTodoList'
 import Count from '../../containers/Count'
-import './App.css';
+import './App.scss';
+
+function Example(props) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+
+    return () => {
+      console.log('22222222222')
+    }
+  })
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  )
+}
 
 class App extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      number: 0
+    }
+  }
   componentWillMount() {
     console.log('componentWillMount')
   }
@@ -31,20 +58,40 @@ class App extends React.Component {
     console.log('componentWillReceiveProps')
   }
 
+  btnClick() {
+    let number = this.state.number
+    this.setState({ number: ++number })
+  }
+
   render() {
     return (
       <div className="App">
-        Hello {this.props.name}
+        <h2 className={'component-title'}>Route</h2>
+        <div className={'component-content'}>
+          <Link className={'link'} to="/hello">Hello</Link>
+          <Link className={'link'} to="/timer">Timer</Link>
+          <Link className={'link'} to="/game">Game</Link>
+          <Link className={'link'} to="/todoList">TodoList</Link>
+        </div>
 
-        <Link to="/hello">Hello</Link>
-        <Link to="/timer">Timer</Link>
-        <Link to="/game">Game</Link>
-        <Link to="/todoList">TodoList</Link>
+        <h2 className={'component-title'}>Todo List</h2>
+        <div className={'component-content'}>
+          <AddTodo />
+          <VisibleTodoList />
+          <Footer />
+        </div>
 
-        <AddTodo />
-        <VisibleTodoList />
-        <Count />
-        <Footer />
+        <h2 className={'component-title'}>Count</h2>
+        <div className={'component-content'}>
+          <Count />
+        </div>
+
+        <h2 className={'component-title'}>React Hook</h2>
+        <div className={'component-content'}>
+          <Example number={this.state.number} />
+        </div>
+
+        <button onClick={this.btnClick.bind(this)}>点击</button>
 
         <div className="router-children">
           {this.props.children}

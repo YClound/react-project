@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Link = ({ active, children, onClick }) => {
+const FLink = ({ active, children, onClick }) => {
   if (active) {
     return <span>{children}</span>
   }
 
   return (
     <a
-      href=""
+      href="{true}"
       onClick={e => {
         e.preventDefault()
         onClick()
@@ -19,10 +19,10 @@ const Link = ({ active, children, onClick }) => {
   )
 }
 
-Link.propTypes = {
+FLink.propTypes = {
   active: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired
 }
 
-export default Link
+export default FLink
