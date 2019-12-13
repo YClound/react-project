@@ -3,10 +3,10 @@ import todos from './todos'
 import visibilityFilter from './visibilityFilter'
 import count from './test'
 
-const todoApp = combineReducers({
+const reducerRedux = combineReducers({
   todos,
   visibilityFilter,
   count
 })
 
-export default todoApp
+export default reducerRedux

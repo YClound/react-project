@@ -83,7 +83,7 @@ class App extends React.Component {
 
         <h2 className={'component-title'}>Count</h2>
         <div className={'component-content'}>
-          <Count />
+          <Count text="222222" />
         </div>
 
         <h2 className={'component-title'}>React Hook</h2>

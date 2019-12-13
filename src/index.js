@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux';
 
-import todoApp from './store/reducers';
+import reducerRedux from './store/reducers';
 import routers from './router';
 
 import './index.scss';
 
-let store = createStore(todoApp);
+let store = createStore(reducerRedux);
+
+
 ReactDOM.render((
   <Provider store={store}>
     {routers}

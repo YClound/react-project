@@ -2,18 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addCount, jianCount } from '../store/actions'
 
-let Count = ({ count, onAddClick, onJianClick }) => {
+let Count = ({ count, number, text, onAddClick, onJianClick }) => {
   return (
     <div className="count-wrapper">
       <button onClick={onAddClick}>加一</button>
-      <span>{count}</span>
+      <span>{count} + {number}</span>
       <button onClick={onJianClick}>减一</button>
+
+      <div>{text}</div>
     </div>
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps, 'ownProps')
   return {
+    ...ownProps,
+    number: 20,
     count: state.count
   }
 }

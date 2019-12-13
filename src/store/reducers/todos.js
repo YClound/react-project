@@ -1,5 +1,5 @@
 const todos = (state = [], action) => {
-  console.log(state, action)
+  console.log(state, action, 'todos reducers')
   switch (action.type) {
     case 'ADD_TODO':
       return [
