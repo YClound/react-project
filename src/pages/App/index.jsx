@@ -29,12 +29,13 @@ function Example(props) {
 
 class App extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       number: 0
     }
   }
   componentWillMount() {
+    console.log(this.props)
     console.log('componentWillMount')
   }
 
@@ -72,6 +73,7 @@ class App extends React.Component {
           <Link className={'link'} to="/timer">Timer</Link>
           <Link className={'link'} to="/game">Game</Link>
           <Link className={'link'} to="/todoList">TodoList</Link>
+          <Link className={'link'} to="/route">RouteIndex</Link>
         </div>
 
         <h2 className={'component-title'}>Todo List</h2>

@@ -1,15 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Example from './Example';
+import { useParams, useRouteMatch, useHistory } from 'react-router-dom';
 
-class HookIndex extends Component {
-  render() {
-    return (
-      <Fragment>
+function HookIndex() {
+  const { id } = useParams();
+  const { location } = useHistory(); // 获取隐式传参的state
+
+  useEffect(() => {
+    console.log(id, location.state) 
+  }, [])
+  
+  return (
+    <Fragment>
       <div>HookIndex</div>
       <Example />
-      </Fragment>
-    )
-  }
+    </Fragment>
+  )
 }
 
 export default HookIndex;

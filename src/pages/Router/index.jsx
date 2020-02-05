@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './index.scss';
 
 function Home() {
@@ -50,13 +50,13 @@ function Header() {
   return (
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/route/home">Home</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/route/about">About</Link>
       </li>
       <li>
-        <Link to="/topics">Topics</Link>
+        <Link to="/route/topics">Topics</Link>
       </li>
     </ul>
   );
@@ -67,31 +67,28 @@ class RouterIndex extends React.Component {
   constructor(props) {
     super(props);
   }
-  handleTouchStart(e){
-    console.log(e, 'touchStart')
-  }
 
-  handleTouchMove(e) {
-    console.log(e.currentTarget[0], 'touchMove')
+  jupmToHook() {
+    //  this.props.history.push('/hook/999')
+    this.props.history.push({
+      pathname: '/hook/999',
+      state: { id: 999 }
+    })
   }
 
   render() {
     return (
-      <Router>
-        <div>
-          <Header />
+      // <Router>
+      <div>
+        <Header />
 
-          <Route exact path="/home" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />
+        <Route exact path="/route/home" component={Home} />
+        <Route path="/route/about" component={About} />
+        <Route path="/route/topics" component={Topics} />
 
-          {/* <functionComp /> */}
-
-          <div className="move-area">
-            <div className="move-view" onTouchStart={this.handleTouchStart} onTouchMove={this.handleTouchMove}></div>
-          </div>
-        </div>
-      </Router>
+        <button onClick={this.jupmToHook.bind(this)}>函数页面跳转</button>
+      </div>
+      // </Router>
     )
   }
 }
