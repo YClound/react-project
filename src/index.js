@@ -1,19 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Router from './router';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux';
+// import Router from './router';
+// import { Provider } from 'react-redux'
+// import { createStore } from 'redux';
 
-import reducerRedux from './store/reducers';
+// import reducerRedux from './store/reducers';
 
-import './index.scss';
+// import './index.scss';
 
-let store = createStore(reducerRedux);
+// let store = createStore(reducerRedux);
 
-ReactDOM.render((
-  <Provider store={store}>
-    <Router />
-  </Provider>
-), document.getElementById('root'));
+// ReactDOM.render((
+//   <Provider store={store}>
+//     <Router />
+//   </Provider>
+// ), document.getElementById('root'));
 
+import Admin from './main';
+ReactDOM.render(<Admin />, document.getElementById('root'))
