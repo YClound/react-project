@@ -9,11 +9,15 @@ import Game from '../pages/Game';
 import HookIndex from '../pages/Hooks';
 import Main from '../pages/main';
 import RouterIndex from '../pages/Router';
+
 import ContextTest from '../pages/Context';
 import ContextConsumser from '../pages/Context/consumer';
+import ContextVsRedux from '../pages/ContextVsRedux';
+import ReduxTest from '../pages/ContextVsRedux/reduxTest';
+
 import NotFound from '../pages/NotFound';
 
-
+console.log(ReduxTest)
 const routes = () => (
 	<HashRouter>
 		<Switch>
@@ -27,6 +31,8 @@ const routes = () => (
 			<Route path="/home" component={Main} />
 			<Route path="/context" component={ContextTest} />
 			<Route path="/contextConsumer" component={ContextConsumser} />
+			<Route path="/propsComp" component={ContextVsRedux} />
+			<Route path="/propsRedux" component={ReduxTest} />
 			<Route component={NotFound}></Route>
 		</Switch>
 	</HashRouter>

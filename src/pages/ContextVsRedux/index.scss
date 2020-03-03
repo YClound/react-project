@@ -1,0 +1,30 @@
+.react-base-wrapper {
+  .user-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .nav {
+    background-color: #FFF4CC;
+    border-bottom: 2px solid #FBD239;
+    text-align: right;
+    padding: 10px 20px;
+  }
+  .body {
+    display: flex;
+    padding: 15px;
+    .sidebar {
+      width: 300px;
+      border: 2px solid #2877FB;
+      margin-right: 15px;
+    }
+    .content {
+      flex: 1;
+      border: 2px solid #8CC152;
+
+      a {
+        font-size: 20px;
+        padding-right: 20px;
+      }
+    }
+  }
+}
