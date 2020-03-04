@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import Header from './components/Header/index';
-import Footer from './components/Footer/index';
-import NavLeft from './components/NavLeft/index';
+import Header from './layouts/Header/index';
+import Footer from './layouts/Footer/index';
+import NavLeft from './layouts/NavLeft/index';
 
 import './index.scss';
 

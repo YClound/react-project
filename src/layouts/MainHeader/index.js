@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import './index.scss';
 
-export default class Header extends Component {
+export default class MainHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {

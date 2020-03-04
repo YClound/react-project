@@ -17,5 +17,5 @@ import ReactDOM from 'react-dom';
 //   </Provider>
 // ), document.getElementById('root'));
 
-import Admin from './main';
-ReactDOM.render(<Admin />, document.getElementById('root'))
+import AppRouter from './router/AppRouter';
+ReactDOM.render(<AppRouter />, document.getElementById('root'))

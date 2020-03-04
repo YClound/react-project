@@ -4,7 +4,7 @@ import MenuConfig from '../../config/menuConfig';
 import './index.scss';
 const SubMenu = Menu.SubMenu;
 
-export default class NavLeft extends Component {
+export default class SiderMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
