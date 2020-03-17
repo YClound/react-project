@@ -3,22 +3,27 @@ import { Layout } from 'antd';
 import SiderMenu from '../SiderMenu';
 import MainHeader from '../MainHeader';
 import MainFooter from "../MainFooter";
-
-import './index.scss';
+import styles from './index.module.scss';
+const { Sider, Header, Content, Footer } = Layout
 
 const BasicLayout = ({ route, children }) => {
-  console.log(route, children);
-
   return (
-    <Layout className="main-layout">
-      <SiderMenu routes={route.childRoutes} />
+    <Layout className={styles.mainLayout} hasSider>
       {/* 左侧菜单导航 */}
-      <Layout className="main-layout-right">
-        <MainHeader />
-        <Layout.Content className="main-layout-content">
-          {children}
-          <MainFooter></MainFooter>
-        </Layout.Content>
+      <Sider><SiderMenu routes={route.children} /></Sider>
+      {/* 右侧菜单对应显示的内容 */}
+      <Layout className={styles.mainLayoutRight}>
+        <div className={styles.mainLayoutContainer}>
+          <Header style={{ background: '#fff', padding: 0, height: 'auto' }}>
+            <MainHeader />
+          </Header>
+          <Content className={styles.mainLayoutContent}>
+            {children}
+          </Content>
+          <Footer style={{padding: '15px'}}>
+            <MainFooter />
+          </Footer>
+        </div>
       </Layout>
     </Layout>
   );

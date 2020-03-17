@@ -38,22 +38,4 @@ const routes = () => (
 	</HashRouter>
 )
 
-// const routes = [{
-// 	name: '快速上手',
-// 	path: '/start',
-// 	component: App
-// }, {
-// 	name: '组件',
-// 	path: '/components',
-// 	children: [{
-// 		name: '按钮',
-// 		path: '/components/btn',
-// 		component: Hello
-// 	}, {
-// 		name: '定时器',
-// 		path: '/components/timer',
-// 		component: Timer
-// 	}]
-// }]
-
 export default routes;

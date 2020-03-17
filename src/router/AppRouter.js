@@ -28,11 +28,11 @@ const renderRoutes = routes => {
           return (
             <Route
               key={route.path || index}
+              path={route.path}
               exact={route.exact}
               strict={route.strict}
               render={() => {
-                const renderChildRoutes = renderRoutes(route.childRoutes);
-                console.log(renderChildRoutes, route, route.childRoutes)
+                const renderChildRoutes = renderRoutes(route.children);
                 if (route.component) {
                   return (
                     <Suspense fallback={<LoadingPage />}>

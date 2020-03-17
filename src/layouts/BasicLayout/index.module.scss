@@ -1,0 +1,23 @@
+.mainLayout {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+
+  .mainLayoutRight {
+    flex: 1;
+    overflow-x: auto !important;
+
+    .mainLayoutContainer {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      min-width: 950px;
+
+      .mainLayoutContent {
+        flex: 1;
+        overflow: auto;
+        padding: 15px;
+      }
+    }
+  }
+}

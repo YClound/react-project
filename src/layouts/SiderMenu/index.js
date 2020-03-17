@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 import { Menu, Icon } from 'antd';
-import MenuConfig from '../../config/menuConfig';
-import './index.scss';
+import styles from './index.module.scss';
+import logo from '../../images/logo.svg';
 const SubMenu = Menu.SubMenu;
 
 export default class SiderMenu extends Component {
@@ -13,26 +14,26 @@ export default class SiderMenu extends Component {
   }
 
   componentDidMount() {
-    const menuTreeNode = this.renderMenu(MenuConfig);
+    const menuTreeNode = this.renderMenu(this.props.routes);
     this.setState({ menuTreeNode: menuTreeNode || '' })
   }
 
   renderMenu = (MenuConfig) => {
     return MenuConfig.map(item => {
       if (item.children) {
-        return <SubMenu title={item.title} key={item.key}>
+        return <SubMenu title={item.name} key={item.path}>
           {this.renderMenu(item.children)}
         </SubMenu>
       }
-      return <Menu.Item title={item.title} key={item.key}>{item.title}</Menu.Item>
+      return <Menu.Item title={item.name} key={item.path}><NavLink to={item.path}>{item.name}</NavLink></Menu.Item>
     })
   }
 
   render() {
     return (
-      <div>
-        <div className="logo">
-          <img src="" alt="logo" />
+      <div className={styles.siderMenuWrapper}>
+        <div className={styles.logo}>
+          <img src={logo} alt="logo" />
           <h1>React后台管理</h1>
         </div>
         <Menu theme="dark" mode="inline">

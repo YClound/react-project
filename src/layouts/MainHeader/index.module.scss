@@ -1,5 +1,6 @@
 .header {
-  .header-top {
+  background-color: #fff;
+  .headerTop {
     height: 60px;
     line-height: 60px;
     padding: 0 20px;
@@ -20,7 +21,7 @@
     padding: 0 20px;
     border-top: 1px solid #f9c700;
 
-    .breadcrumb-title {
+    .breadcrumbTitle {
       text-align: center;
     }
 
@@ -32,12 +33,12 @@
         vertical-align: middle;
       }
 
-      .weather-detail {
+      .weatherDetail {
         margin-left: 5px;
         vertical-align: middle;
       }
 
-      .weather-img {
+      .weatherImg {
         img {
           height: 15px;
         }

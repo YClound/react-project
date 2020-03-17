@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
-import './index.scss';
+import styles from './index.module.scss';
 
 export default class MainHeader extends Component {
   constructor(props) {
@@ -12,8 +12,8 @@ export default class MainHeader extends Component {
     }
   }
   render() {
-    return <div className="header" >
-      <Row className="header-top">
+    return <div className={styles.header} >
+      <Row className={styles.headerTop}>
         <Col span={24} >
           <span >欢迎</span>
           <span className="welcome">{this.state.userName}</span>
@@ -21,16 +21,14 @@ export default class MainHeader extends Component {
         </Col>
       </Row>
 
-      <Row className="breadcrumb">
-        <Col span={4} className="breadcrumb-title">
-          首页
-        </Col>
-        <Col span={20} className="weather">
-          <span className="date">{this.state.sysTime}</span>
-          <span className="weather-img">
+      <Row className={styles.breadcrumb}>
+        <Col span={4} className={styles.breadcrumbTitle}>首页</Col>
+        <Col span={20} className={styles.weather}>
+          <span className={styles.date}>{this.state.sysTime}</span>
+          <span className={styles.weatherImg}>
             <img src={this.state.dayPictureUrl} alt="" />
           </span>
-          <span className="weather-detail">
+          <span className={styles.weatherDetail}>
             {this.state.weather}
           </span>
         </Col>
