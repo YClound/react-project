@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import LoadingPage from '../components/loadingPage';
 import config from './config';
+import { fakeAuth } from '../utils/fakeAuth';
 
 const renderRoutes = routes => {
   if (!Array.isArray(routes)) {
@@ -31,12 +32,18 @@ const renderRoutes = routes => {
               path={route.path}
               exact={route.exact}
               strict={route.strict}
-              render={() => {
+              render={(props) => {
                 const renderChildRoutes = renderRoutes(route.children);
                 if (route.component) {
+                  console.log(route.path)
                   return (
                     <Suspense fallback={<LoadingPage />}>
-                      <route.component route={route}>{renderChildRoutes}</route.component>
+                      {fakeAuth.authenticate() || route.path.indexOf('user') > -1
+                        ? (<route.component route={route} {...props}>{renderChildRoutes}</route.component>)
+                        : <Redirect to={{
+                          pathname: "/user/login",
+                          state: { from: props.location }
+                        }} />}
                     </Suspense>
                   )
                 }

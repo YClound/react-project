@@ -24,8 +24,6 @@ class Hello extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.inputHandleChange = this.inputHandleChange.bind(this);
-
-    console.log(props, '11111111')
   }
 
   componentDidMount() {

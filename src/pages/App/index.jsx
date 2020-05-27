@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer'
 import AddTodo from '../../containers/AddTodo'
 import VisibleTodoList from '../../containers/VisibleTodoList'
@@ -35,7 +34,6 @@ class App extends React.Component {
     }
   }
   componentWillMount() {
-    console.log(this.props)
     console.log('componentWillMount')
   }
 
@@ -67,15 +65,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h2 className={'component-title'}>Route</h2>
-        <div className={'component-content'}>
-          <Link className={'link'} to="/hello">Hello</Link>
-          <Link className={'link'} to="/timer">Timer</Link>
-          <Link className={'link'} to="/game">Game</Link>
-          <Link className={'link'} to="/todoList">TodoList</Link>
-          <Link className={'link'} to="/route">RouteIndex</Link>
-        </div>
-
         <h2 className={'component-title'}>Todo List</h2>
         <div className={'component-content'}>
           <AddTodo />
@@ -94,10 +83,6 @@ class App extends React.Component {
         </div>
 
         <button onClick={this.btnClick.bind(this)}>点击</button>
-
-        <div className="router-children">
-          {this.props.children}
-        </div>
       </div>
     )
   }

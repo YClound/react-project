@@ -17,7 +17,7 @@ export default class MainHeader extends Component {
         <Col span={24} >
           <span >欢迎</span>
           <span className="welcome">{this.state.userName}</span>
-          <a href="">退出</a>
+          <a href="#/login">退出</a>
         </Col>
       </Row>
 

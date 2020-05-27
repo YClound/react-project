@@ -21,11 +21,24 @@ export default class SiderMenu extends Component {
   renderMenu = (MenuConfig) => {
     return MenuConfig.map(item => {
       if (item.children) {
-        return <SubMenu title={item.name} key={item.path}>
+        return <SubMenu
+          title={
+            <span>
+              {item.icon && <Icon type={item.icon} />}
+              <span>{item.name}</span>
+            </span>
+          } key={item.path}>
           {this.renderMenu(item.children)}
         </SubMenu>
       }
-      return <Menu.Item title={item.name} key={item.path}><NavLink to={item.path}>{item.name}</NavLink></Menu.Item>
+      return item.hideMenu ? '' : <Menu.Item
+        title={item.name}
+        key={item.path}>
+        <NavLink to={item.path}>
+          {item.icon && <Icon type={item.icon} />}
+          <span>{item.name}</span>
+        </NavLink>
+      </Menu.Item>
     })
   }
 

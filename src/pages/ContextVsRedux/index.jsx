@@ -44,8 +44,8 @@ const Body = ({ sidebar, content }) => (
 
 const Content = () => <div className="content">
   <h2>main content here</h2>
-  <Link to="/propsRedux">Redux</Link>
-  <Link to="/context">Context</Link>
+  <Link to="/base/propsRedux">Redux</Link>
+  <Link to="/base/context">Context</Link>
 </div>;
 
 const Sidebar = ({ children }) => (
