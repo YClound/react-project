@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ChatAPI } from './utils/chatApi';
+import FancyButton from './ExampleRef';
 
 export default class ExampleClass extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class ExampleClass extends Component {
       isOnline: null
     }
 
+    this.buttonRef = React.createRef();
     this.handleStatusChange = this.handleStatusChange.bind(this);
   }
 
@@ -21,6 +23,19 @@ export default class ExampleClass extends Component {
       this.handleStatusChange,
       'Class'
     );
+    
+    /**
+     * refs
+     * 1. React.forwardRef
+     * 2. Class
+     * @version 2020.05.28
+     * @see https://react.docschina.org/docs/refs-and-the-dom.html
+    */ 
+    // this.buttonRef.current.className = '11111'
+    // console.log(this.buttonRef.current.className)
+    this.buttonRef.current.handleRefMethod();
+    this.buttonRef.current.state.btnName = '按钮2';
+    console.log(this.buttonRef.current)
   }
 
   componentDidUpdate() {
@@ -50,6 +65,9 @@ export default class ExampleClass extends Component {
 
       <h1>生命周期</h1>
       <div>{this.state.isOnline === null ? 'loading' : this.state.isOnline ? 'Online' : 'Offline'}</div>
+
+      <h2>Refs转发</h2>
+      <FancyButton ref={this.buttonRef}>Refs转发</FancyButton>
     </div>
   }
 }
