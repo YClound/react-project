@@ -7,6 +7,7 @@ import React, { useState, useEffect, useRef, createRef } from 'react';
 import { useFriendStatus } from './utils/useFriendStatus';
 import { usePrevious } from './utils/usePrevious';
 import FancyButton from './ExampleRef';
+import ExampleUseReducer from './ExampleUseReducer'
 
 const buttonRef = React.createRef();
 
@@ -103,6 +104,8 @@ export default function ExampleHook(props) {
       <div>createRef常量：{constCreateRef.current}</div>
       <div>preCountUseRef: {preCountUseRef.current} - {previousRefCount}</div>
       <button onClick={handleRefClick}>改变Ref</button>
+
+      <ExampleUseReducer />
     </div>
   );
 }

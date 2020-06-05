@@ -38,6 +38,10 @@ const config = [{
     name: '基础用法',
     icon: 'smile',
     children: [{
+      path: '/base/HOC',
+      name: '高阶组件(HOC)',
+      component: lazy(() => import('../pages/HOC')),
+    }, {
       path: '/base/hook',
       name: 'Hook',
       component: lazy(() => import('../pages/Hooks')),

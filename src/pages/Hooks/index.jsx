@@ -20,6 +20,7 @@ function HookIndex() {
     <div className={'hooke-wrapper'}>
       <ExampleHook friend={frined} />
       <ExampleClass friend={frined} />
+      
     </div>
   )
 }
