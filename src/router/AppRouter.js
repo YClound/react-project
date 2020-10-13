@@ -6,10 +6,7 @@ import config from './config';
 import { fakeAuth } from '../utils/fakeAuth';
 
 const renderRoutes = routes => {
-  if (!Array.isArray(routes)) {
-    return null;
-  }
-
+  if (!Array.isArray(routes)) { return null; }
   return (
     <Switch>
       {

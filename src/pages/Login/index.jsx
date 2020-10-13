@@ -5,12 +5,16 @@ import styles from './index.module.scss';
 
 class Login extends Component {
   componentDidMount() {
-
+    setTimeout(() => {
+      this.props.history.push('/home')
+    }, 2000);
   }
 
   handleLogin = () => {
     fakeAuth.setToken('11111111')
     this.props.history.push('/home');
+
+    console.log(this.props.history)
   }
 
   render() {
