@@ -86,11 +86,11 @@ export default function ExampleHook(props) {
   }
 
   return (
-    <div>
+    <div className={'hook-wrapper'}>
       <h1>Hook示例</h1>
       <p>You clicked {count} times</p>
       <button onClick={setHookState}>Click me</button>
-
+      
       <h1>useEffect</h1>
       <div>{isOnline === null ? 'loading' : isOnline ? 'Online' : 'Offline'}</div>
 

@@ -23,14 +23,14 @@ export default class ExampleClass extends Component {
       this.handleStatusChange,
       'Class'
     );
-    
+
     /**
      * refs
      * 1. React.forwardRef
      * 2. Class
      * @version 2020.05.28
      * @see https://react.docschina.org/docs/refs-and-the-dom.html
-    */ 
+    */
     // this.buttonRef.current.className = '11111'
     // console.log(this.buttonRef.current.className)
     this.buttonRef.current.handleRefMethod();
@@ -66,7 +66,7 @@ export default class ExampleClass extends Component {
       <h1>生命周期</h1>
       <div>{this.state.isOnline === null ? 'loading' : this.state.isOnline ? 'Online' : 'Offline'}</div>
 
-      <h2>Refs转发</h2>
+      <h1>Refs转发</h1>
       <FancyButton ref={this.buttonRef}>Refs转发</FancyButton>
     </div>
   }

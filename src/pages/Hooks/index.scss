@@ -1,4 +1,18 @@
 .hooke-wrapper {
   display: flex;
   justify-content: space-around;
+
+  h1 {
+    border-top: 1px #dcdcdc dashed;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .hook-wrapper, .class-wrapper {
+    flex: 1;
+  }
+
+  button {
+    margin-right: 16px;
+  }
 }
