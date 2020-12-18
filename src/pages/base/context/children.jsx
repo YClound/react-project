@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { homeContext } from '../../utils/context';
+import { homeContext } from '@/utils/context';
 
 /**
  * 在嵌套组件中更新 Context

@@ -20,19 +20,6 @@ export default class MainHeader extends Component {
           <a href="#/login">退出</a>
         </Col>
       </Row>
-
-      <Row className={styles.breadcrumb}>
-        <Col span={4} className={styles.breadcrumbTitle}>首页</Col>
-        <Col span={20} className={styles.weather}>
-          <span className={styles.date}>{this.state.sysTime}</span>
-          <span className={styles.weatherImg}>
-            <img src={this.state.dayPictureUrl} alt="" />
-          </span>
-          <span className={styles.weatherDetail}>
-            {this.state.weather}
-          </span>
-        </Col>
-      </Row>
     </div>
   }
 }

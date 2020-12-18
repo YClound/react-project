@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
-import { Menu, Icon } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { Menu } from 'antd';
+import { HomeFilled, SmileFilled, DatabaseFilled, TagFilled, ApiFilled, HourglassFilled, PushpinFilled } from '@ant-design/icons';
+
 import styles from './index.module.scss';
-import logo from '../../images/logo.svg';
+import logo from '@/images/logo.svg';
+
 const SubMenu = Menu.SubMenu;
+const IconMap = {
+  home: <HomeFilled height={'2em'} />,
+  smile: <SmileFilled />,
+  base: <DatabaseFilled />,
+  tag: <TagFilled />,
+  hook: <HourglassFilled />,
+  api: <ApiFilled />,
+  advanced: <PushpinFilled />,
+}
 
 export default class SiderMenu extends Component {
   constructor(props) {
@@ -24,7 +36,7 @@ export default class SiderMenu extends Component {
         return <SubMenu
           title={
             <span>
-              {item.icon && <Icon type={item.icon} />}
+              {item.icon && IconMap[item.icon]}
               <span>{item.name}</span>
             </span>
           } key={item.path}>
@@ -35,7 +47,7 @@ export default class SiderMenu extends Component {
         title={item.name}
         key={item.path}>
         <NavLink to={item.path}>
-          {item.icon && <Icon type={item.icon} />}
+          {item.icon && IconMap[item.icon]}
           <span>{item.name}</span>
         </NavLink>
       </Menu.Item>

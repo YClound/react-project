@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ContextChildren from './children';
-import { homeContext } from '../../utils/context';
+import { homeContext } from '@/utils/context';
 
 /**
  * Context的基本使用方法

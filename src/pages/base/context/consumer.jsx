@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { consumerContext } from '../../utils/context';
+import { consumerContext } from '@/utils/context';
 
 /**
  *  Context.Consumer 

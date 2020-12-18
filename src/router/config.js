@@ -1,7 +1,6 @@
-/* eslint-disable import/extensions */
 import { lazy } from 'react';
-import BasicLayout from '../layouts/BasicLayout';
-import BlankLayout from '../layouts/BlankLayout';
+import BasicLayout from '@/layouts/BasicLayout';
+import BlankLayout from '@/layouts/BlankLayout';
 
 const config = [{
   path: '/user',
@@ -10,10 +9,10 @@ const config = [{
     path: '/user/login/:from?', // 路由路径
     name: '登录页', // 菜单名称 (不设置,则不展示在菜单栏中）
     icon: 'setting', // 菜单图标
-    component: lazy(() => import('../pages/Login')), // 懒加载 路由组件
+    component: lazy(() => import('@/pages/Login')), // 懒加载 路由组件
   }, {
     path: '*',
-    component: lazy(() => import('../pages/NotFound')),
+    component: lazy(() => import('@/pages/NotFound')),
   }]
 }, {
   path: '/',
@@ -21,63 +20,84 @@ const config = [{
   admin: ['admin'],
   children: [{
     path: '/',
-    exact: true,
-    redirect: '/home'
-  }, {
-    path: '/home',
     name: '主页',
     icon: 'home',
-    component: lazy(() => import('../pages/Hello')),
+    exact: true,
+    component: lazy(() => import('@/pages/hello')),
   }, {
     path: '/hello',
     name: '欢迎页',
     icon: 'smile',
-    component: lazy(() => import('../pages/App')),
+    component: lazy(() => import('@/pages/app')),
   }, {
     path: '/base',
     name: '基础用法',
-    icon: 'smile',
+    icon: 'base',
     children: [{
-      path: '/base/HOC',
-      name: '高阶组件(HOC)',
-      component: lazy(() => import('../pages/HOC')),
-    }, {
-      path: '/base/hook',
-      name: 'Hook',
-      component: lazy(() => import('../pages/Hooks')),
-    }, {
       path: '/base/context',
       name: 'Context',
-      component: lazy(() => import('../pages/Context')),
+      component: lazy(() => import('@/pages/base/context')),
     }, {
       path: '/base/contextConsumer',
       name: 'contextConsumer',
-      component: lazy(() => import('../pages/Context/consumer')),
+      component: lazy(() => import('@/pages/base/context/consumer')),
     }, {
       path: '/base/propsComp',
       name: 'propsComp',
-      component: lazy(() => import('../pages/ContextVsRedux/index')),
+      component: lazy(() => import('@/pages/base/contextVsRedux/index')),
     }, {
       path: '/base/propsRedux',
       name: 'propsRedux',
-      component: lazy(() => import('../pages/ContextVsRedux/reduxTest')),
+      component: lazy(() => import('@/pages/base/contextVsRedux/reduxTest')),
       hideMenu: true
-    }, {
-      path: '/base/game',
-      name: 'Game',
-      component: lazy(() => import('../pages/Game')),
-    }, {
-      path: '/base/todoList',
-      name: 'TodoList',
-      component: lazy(() => import('../pages/TodoList')),
     }]
   }, {
+    name: 'Hook',
+    icon: 'hook',
+    path: '/hook',
+    children: [{
+      path: '/hook/base',
+      name: 'Hook基础',
+      component: lazy(() => import('@/pages/hook')),
+    }, {
+      path: '/hook/effect',
+      name: 'useEffect',
+      component: lazy(() => import('@/pages/hook/UseEffectExamp')),
+    }]
+  }, {
+    name: '进阶',
+    icon: 'advanced',
+    path: '/advanced',
+    children: [{
+      path: '/advanced/hoc',
+      name: '高阶组件(HOC)',
+      component: lazy(() => import('@/pages/advanced/hoc')),
+    }]
+  }, {
+    path: '/example',
+    name: '示例',
+    icon: 'tag',
+    children: [{
+      path: '/example/game',
+      name: 'Game',
+      component: lazy(() => import('@/pages/example/game')),
+    }, {
+      path: '/example/todoList',
+      name: 'TodoList',
+      component: lazy(() => import('@/pages/example/todoList')),
+    }]
+  }, {
+    path: '/axios',
+    name: 'axios',
+    icon: 'api',
+    component: lazy(() => import('@/pages/axios')),
+  }, {
     path: '*',
-    component: lazy(() => import('../pages/NotFound')),
+    component: lazy(() => import('@/pages/NotFound')),
   }],
 }, {
   path: '*',
-  component: lazy(() => import('../pages/NotFound')),
+  component: lazy(() => import('@/pages/NotFound')),
 }];
 
 export default config;
