@@ -1,5 +1,8 @@
 .siderMenuWrapper {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   .logo {
     display: flex;
@@ -18,6 +21,12 @@
       display: inline-block;
       vertical-align: middle;
       margin-left: 5px;
+      margin-bottom: 0;
     }
+  }
+
+  .menu-list {
+    flex: 1;
+    overflow-y: auto;
   }
 }

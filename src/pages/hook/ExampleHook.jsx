@@ -3,15 +3,13 @@
  * 函数组件被调用 -> 执行代码 ->根据return的JSX渲染DOM -> 执行useEffect -> 函数组件被重新调用 -> 执行代码 -> 根据return的JSX重新渲染DOM -> 执行useEffect。
  */
 import React, { useState, useEffect, useRef, createRef } from 'react';
-import { useFriendStatus } from './utils/useFriendStatus';
 import { usePrevious } from './utils/usePrevious';
 import FancyButton from './ExampleRef';
 import ExampleUseReducer from './ExampleUseReducer'
 
 const buttonRef = React.createRef();
 
-export default function ExampleHook(props) {
-  const { friend } = props;
+export default function ExampleHook() {
   const [count, setCount] = useState(0);
   const buttonUseRefs = useRef({});
   const constUseRef = useRef(0);
@@ -25,7 +23,6 @@ export default function ExampleHook(props) {
 
   useEffect(() => {
     // 更新文档的标题
-    // console.log(+new Date(), count, 'Hook useEffect')
     document.title = `Hook ${count} times`;
   }, [count]);
 
@@ -38,8 +35,6 @@ export default function ExampleHook(props) {
       clearInterval(pid);
     }
   }, [])
-
-  const isOnline = useFriendStatus(friend.id);
 
   /**
    * Refs
@@ -57,7 +52,6 @@ export default function ExampleHook(props) {
   useEffect(() => {
     // 数据更新了 但是页面未显示
     preCountUseRef.current = count;
-    // console.log('获取上一次数据：', count, preCountUseRef.current)
   }, [count])
 
   const handleAlterClick = () => {
@@ -69,7 +63,7 @@ export default function ExampleHook(props) {
   const handleRefClick = () => {
     constUseRef.current = count + 1;
     constCreateRef.current = count + 1;
-    // setCount(count + 1)
+    setCount(count + 1)
   }
 
   return (

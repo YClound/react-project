@@ -7,7 +7,7 @@ import './index.scss';
 function HookIndex() {
   const { id = '' } = useParams();
   const { location } = useHistory(); // 获取隐式传参的state
-  // console.log(id, location.state, 'index')
+  console.log(id, location.state, 'index')
 
   const [frined, setFriend] = useState({ id: '1' })
   useEffect(() => {

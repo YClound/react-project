@@ -16,7 +16,7 @@ const BasicLayout = ({ route, children }) => {
     <Layout className={styles.mainLayout} hasSider>
       {/* 左侧菜单导航 */}
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <SiderMenu routes={route.children} />
+        <SiderMenu routes={route.children} collapsed={collapsed} />
       </Sider>
       {/* 右侧菜单对应显示的内容 */}
       <Layout className={styles.mainLayoutRight}>

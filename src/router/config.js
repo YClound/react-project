@@ -9,10 +9,10 @@ const config = [{
     path: '/user/login/:from?', // 路由路径
     name: '登录页', // 菜单名称 (不设置,则不展示在菜单栏中）
     icon: 'setting', // 菜单图标
-    component: lazy(() => import('@/pages/Login')), // 懒加载 路由组件
+    component: lazy(() => import('@/pages/login')), // 懒加载 路由组件
   }, {
     path: '*',
-    component: lazy(() => import('@/pages/NotFound')),
+    component: lazy(() => import('@/pages/notFound')),
   }]
 }, {
   path: '/',
@@ -88,16 +88,20 @@ const config = [{
     }]
   }, {
     path: '/axios',
-    name: 'axios',
+    name: 'axios用法',
     icon: 'api',
-    component: lazy(() => import('@/pages/axios')),
+    children: [{
+      path: '/axios/base',
+      name: '基本用法',
+      component: lazy(() => import('@/pages/axios')),
+    }]
   }, {
     path: '*',
-    component: lazy(() => import('@/pages/NotFound')),
+    component: lazy(() => import('@/pages/notFound')),
   }],
 }, {
   path: '*',
-  component: lazy(() => import('@/pages/NotFound')),
+  component: lazy(() => import('@/pages/notFound')),
 }];
 
 export default config;

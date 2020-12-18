@@ -8,7 +8,7 @@ import logo from '@/images/logo.svg';
 
 const SubMenu = Menu.SubMenu;
 const IconMap = {
-  home: <HomeFilled height={'2em'} />,
+  home: <HomeFilled />,
   smile: <SmileFilled />,
   base: <DatabaseFilled />,
   tag: <TagFilled />,
@@ -55,13 +55,14 @@ export default class SiderMenu extends Component {
   }
 
   render() {
+    const { collapsed } = this.props;
     return (
       <div className={styles.siderMenuWrapper}>
         <div className={styles.logo}>
           <img src={logo} alt="logo" />
-          <h1>React后台管理</h1>
+          {!collapsed && <h1>React后台管理</h1>}
         </div>
-        <Menu theme="dark" mode="inline">
+        <Menu theme="dark" mode="inline" className={styles['menu-list']}>
           {this.state.menuTreeNode}
         </Menu>
       </div>
