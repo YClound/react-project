@@ -1,0 +1,29 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "commonjs",
+		"strict": true,
+		"noImplicitAny": false,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react",
+		"jsxFactory": "React.createElement",
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		}
+	},
+	"files": ["./src/index.tsx"],
+	"include": [
+		"./src/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"config",
+		"build",
+		"scripts"
+	]
+}
