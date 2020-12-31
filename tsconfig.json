@@ -1,29 +1,31 @@
 {
-	"compileOnSave": true,
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "commonjs",
-		"strict": true,
-		"noImplicitAny": false,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"jsx": "react",
-		"jsxFactory": "React.createElement",
-		"paths": {
-			"@/*": [
-				"./src/*"
-			]
-		}
-	},
-	"files": ["./src/index.tsx"],
-	"include": [
-		"./src/**/*"
-	],
-	"exclude": [
-		"node_modules",
-		"config",
-		"build",
-		"scripts"
-	]
+  "compilerOptions": {
+    "target": "esnext",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src"
+  ],
+  "files": [
+    "./src/index.tsx"
+  ],
+  "extends": "./paths.json"
 }
