@@ -1,7 +1,9 @@
-import React, { Component, FC } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, FC } from "react";
+import { Card } from "antd";
+import { Link } from "react-router-dom";
+import logo from "@/images/logo.svg";
 
-import './index.scss'
+import "./index.scss";
 /**
  * 使用组合方式children解决props属性下浸
  * @author guyanan
@@ -19,7 +21,7 @@ const UserAvatar = ({ user, size }) => (
 const UserStats = ({ user }) => (
   <div className="user-stats">
     <div className="user-info">
-      <UserAvatar user={user} size={'small'} />
+      <UserAvatar user={user} size={"small"} />
       {user.name}
     </div>
     <div className="stats">
@@ -29,11 +31,7 @@ const UserStats = ({ user }) => (
   </div>
 );
 
-const Nav = ({ children }) => (
-  <div className="nav">
-    {children}
-  </div>
-);
+const Nav = ({ children }) => <div className="nav">{children}</div>;
 
 const Body = ({ sidebar, content }) => (
   <div className="body">
@@ -42,44 +40,43 @@ const Body = ({ sidebar, content }) => (
   </div>
 );
 
-const Content: FC<any> = () => <div className="content">
-  <h2>main content here</h2>
-  <Link to="/base/propsRedux">Redux</Link>
-  <Link to="/base/context">Context</Link>
-</div>;
-
-const Sidebar = ({ children }) => (
-  <div className="sidebar">
-    {children}
+const Content: FC<any> = () => (
+  <div className="content">
+    <h2>main content here</h2>
+    <Link to="/base/propsRedux">Redux</Link>
+    <Link to="/base/context">Context</Link>
   </div>
 );
+
+const Sidebar = ({ children }) => <div className="sidebar">{children}</div>;
 
 class ContextVsRedux extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
       user: {
-        avatar:
-          "https://www.gravatar.com/avatar/5c3dd2d257ff0e14dbd2583485dbd44b",
-        name: "Dave",
+        avatar: logo,
+        name: "Yanan",
         followers: 1234,
-        following: 123
-      }
+        following: 123,
+      },
     };
   }
 
   render() {
     const { user } = this.state;
 
-    return <div className="react-base-wrapper">
-      <Nav>
-        <UserAvatar user={user} size="small" />
-      </Nav>
-      <Body
-        sidebar={<UserStats user={user} />}
-        content={<Content user={user} />}
-      />
-    </div>
+    return (
+      <Card className="react-base-wrapper">
+        <Nav>
+          <UserAvatar user={user} size="small" />
+        </Nav>
+        <Body
+          sidebar={<UserStats user={user} />}
+          content={<Content user={user} />}
+        />
+      </Card>
+    );
   }
 }
 

@@ -2,42 +2,25 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getSelectKeys } from "@/store/actions";
-import {
-  HomeFilled,
-  SmileFilled,
-  DatabaseFilled,
-  TagFilled,
-  ApiFilled,
-  HourglassFilled,
-  PushpinFilled,
-} from "@ant-design/icons";
-
+import { RooteStateModel } from "@/store/reducers";
+import { setSelectKeys } from "@/store/actions";
 import styles from "./index.module.scss";
 import logo from "@/images/logo.svg";
 
 const SubMenu = Menu.SubMenu;
-const IconMap = {
-  home: <HomeFilled />,
-  smile: <SmileFilled />,
-  base: <DatabaseFilled />,
-  tag: <TagFilled />,
-  hook: <HourglassFilled />,
-  api: <ApiFilled />,
-  advanced: <PushpinFilled />,
-};
 
 const SiderMenu = (props) => {
   const { routes = [], collapsed } = props;
   const [menuTreeNode, setMenuTreeNode] = useState("");
-  const [current, setCurrent] = useState("/");
+  const { openKey, selectKey } = useSelector(
+    (state: RooteStateModel) => state.global
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     const menuTreeNode = renderMenu(routes);
     setMenuTreeNode(menuTreeNode || "");
-    dispatch({ type: getSelectKeys });
-  }, [routes]);
+  }, []);
 
   const renderMenu = (MenuConfig) => {
     return MenuConfig.map((item) => {
@@ -46,7 +29,7 @@ const SiderMenu = (props) => {
           <SubMenu
             title={
               <span>
-                {item.icon && IconMap[item.icon]}
+                {item.icon}
                 <span>{item.name}</span>
               </span>
             }
@@ -60,7 +43,7 @@ const SiderMenu = (props) => {
       return !item.hideMenu ? (
         <Menu.Item title={item.name} key={item.path}>
           <NavLink to={item.path}>
-            {item.icon && IconMap[item.icon]}
+            {item.icon}
             <span>{item.name}</span>
           </NavLink>
         </Menu.Item>
@@ -71,7 +54,8 @@ const SiderMenu = (props) => {
   };
 
   const handleClick = (e) => {
-    setCurrent(e.key);
+    console.log(e);
+    dispatch(setSelectKeys(e));
   };
 
   return (
@@ -85,7 +69,8 @@ const SiderMenu = (props) => {
         mode="inline"
         className={styles["menu-list"]}
         onClick={handleClick}
-        selectedKeys={[current]}
+        defaultSelectedKeys={[selectKey]}
+        defaultOpenKeys={[openKey]}
       >
         {menuTreeNode}
       </Menu>

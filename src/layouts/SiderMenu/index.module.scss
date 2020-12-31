@@ -20,8 +20,10 @@
       font-size: 20px;
       display: inline-block;
       vertical-align: middle;
-      margin-left: 5px;
-      margin-bottom: 0;
+      margin: 0 0 0 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

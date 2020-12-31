@@ -10,6 +10,7 @@ const renderRoutes = (routes) => {
   if (!Array.isArray(routes)) {
     return null;
   }
+
   return (
     <CacheSwitch>
       {routes.map((route, index) => {

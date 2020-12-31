@@ -1,90 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import Footer from '../../components/Footer'
-import AddTodo from '../../containers/AddTodo'
-import VisibleTodoList from '../../containers/VisibleTodoList'
-import Count from '../../containers/Count'
-import './App.scss';
-
-function Example(props) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    document.title = `You clicked ${count} times`;
-
-    return () => {
-      console.log('22222222222')
-    }
-  })
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  )
-}
+import React from "react";
+import { Card } from "antd";
+import Count from "@/components/Count";
+import styles from "./index.module.scss";
 
 class App extends React.Component<any, any> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: 0
-    }
+  handleLife(life) {
+    console.info(life);
   }
+
   componentWillMount() {
-    console.log('componentWillMount')
+    this.handleLife("componentWillMount");
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
+    this.handleLife("componentDidMount");
   }
 
   componentWillUpdate() {
-    console.log('componentWillUpdate')
+    this.handleLife("componentWillUpdate");
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate')
+    this.handleLife("componentDidUpdate");
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount')
+    this.handleLife("componentWillUnmount");
   }
 
   componentWillReceiveProps() {
-    console.log('componentWillReceiveProps')
-  }
-
-  btnClick() {
-    let number = this.state.number
-    this.setState({ number: ++number })
+    this.handleLife("componentWillReceiveProps");
   }
 
   render() {
     return (
-      <div className="App">
-        <h2 className={'component-title'}>Todo List</h2>
-        <div className={'component-content'}>
-          <AddTodo />
-          <VisibleTodoList />
-          <Footer />
-        </div>
-
-        <h2 className={'component-title'}>Count</h2>
-        <div className={'component-content'}>
-          <Count text="222222" />
-        </div>
-
-        <h2 className={'component-title'}>React Hook</h2>
-        <div className={'component-content'}>
-          <Example number={this.state.number} />
-        </div>
-
-        <button onClick={this.btnClick.bind(this)}>点击</button>
-      </div>
-    )
+      <>
+        <Card className={styles["App"]}>
+          <h2 className={styles["component-title"]}>Count</h2>
+          <div className={styles["component-content"]}>
+            <Count />
+          </div>
+        </Card>
+      </>
+    );
   }
 }
 

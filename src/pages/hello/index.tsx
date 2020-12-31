@@ -1,8 +1,8 @@
 import React from "react";
+import { Card, Select } from "antd";
 import TemperatureInput from "./TemperatureInput";
-import Dialog from "./Dialog";
 import logo from "@/images/logo.svg";
-import helloStyle from "@/styles/hello.module.scss";
+import helloStyle from "./index.module.scss";
 import "@/styles/test.scss";
 
 function BoilingVerdict(props) {
@@ -24,10 +24,7 @@ class Hello extends React.Component<any, any> {
       temperature: "",
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.inputHandleChange = this.inputHandleChange.bind(this);
-
-    console.log("hello comp 333333");
   }
 
   componentDidMount() {
@@ -42,44 +39,44 @@ class Hello extends React.Component<any, any> {
     clearInterval(this.timerId);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
   inputHandleChange(event) {
     this.setState({ temperature: parseFloat(event.target.value) || 0 });
   }
 
+  handleChange = (value) => {
+    this.setState({ value });
+  };
+
   render() {
     return (
-      <div className={helloStyle.wrapper}>
-        <h1>Hello World</h1>
-        <h2>It is {true && this.state.date.toLocaleTimeString()}</h2>
+      <>
+        <Card className={`${helloStyle.wrapper}`}>
+          <h1>Hello World</h1>
+          <h2>It is {true && this.state.date.toLocaleTimeString()}</h2>
 
-        <select
-          name="SelectForm"
-          value={this.state.value}
-          onChange={this.handleChange}
-        >
-          <option value="grapefruit">葡萄柚</option>
-          <option value="lime">酸橙</option>
-          <option value="coconut">椰子</option>
-          <option value="mango">芒果</option>
-        </select>
+          <Select
+            value={this.state.value}
+            onChange={this.handleChange}
+            style={{ width: "100px" }}
+          >
+            <Select.Option value="grapefruit">葡萄柚</Select.Option>
+            <Select.Option value="lime">酸橙</Select.Option>
+            <Select.Option value="coconut">椰子</Select.Option>
+            <Select.Option value="mango">芒果</Select.Option>
+          </Select>
 
-        <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" />
+        </Card>
 
-        <div>
-          <TemperatureInput scale="c" />
-          <TemperatureInput scale="f" />
-        </div>
+        <Card>
+          <div>
+            <TemperatureInput scale="c" />
+            <TemperatureInput scale="f" />
+          </div>
 
-        <BoilingVerdict celsius={this.state.temperature} />
-
-        <Dialog>
-          <div>111</div>
-        </Dialog>
-      </div>
+          <BoilingVerdict celsius={this.state.temperature} />
+        </Card>
+      </>
     );
   }
 }

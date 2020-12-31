@@ -1,9 +1,11 @@
+import { selectKeyModel } from "@/typings";
+
 interface ItemMap {
-  selectedMenuKey: string;
+  selectKey: selectKeyModel;
   curPath: string;
 }
 
-export default {
+const storage = {
   getSessionItem<T extends keyof ItemMap>(key: T): ItemMap[T] | null {
     const value = sessionStorage.getItem(key);
     return value != null ? JSON.parse(value) : value;
@@ -25,3 +27,5 @@ export default {
     localStorage.removeItem(key);
   },
 };
+
+export default storage;

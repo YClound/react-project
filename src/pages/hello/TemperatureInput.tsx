@@ -1,19 +1,20 @@
-import React from 'react';
+import React from "react";
+import { Input } from "antd";
 
 const scaleNames = {
-  c: 'Celsius',
-  f: 'Fahrenheit'
+  c: "Celsius",
+  f: "Fahrenheit",
 };
 
 class TemperatureInput extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = {temperature: ''};
+    this.state = { temperature: "" };
   }
 
   handleChange(e) {
-    this.setState({temperature: e.target.value});
+    this.setState({ temperature: e.target.value });
   }
 
   render() {
@@ -22,8 +23,11 @@ class TemperatureInput extends React.Component<any, any> {
     return (
       <fieldset>
         <legend>Enter temperature in {scaleNames[scale]}:</legend>
-        <input value={temperature}
-               onChange={this.handleChange} />
+        <Input
+          value={temperature}
+          onChange={this.handleChange}
+          style={{ width: "150px" }}
+        />
       </fieldset>
     );
   }

@@ -1,5 +1,6 @@
 .header {
   background-color: #fff;
+
   .headerTop {
     height: 60px;
     line-height: 60px;
@@ -7,42 +8,13 @@
     text-align: right;
 
     .welcome {
-      margin-left: 5px;
+      display: inline-block;
+      width: 100px;
+      text-align: left;
     }
 
     a {
       margin-left: 20px;
-    }
-  }
-
-  .breadcrumb {
-    height: 40px;
-    line-height: 40px;
-    padding: 0 20px;
-    border-top: 1px solid #f9c700;
-
-    .breadcrumbTitle {
-      text-align: center;
-    }
-
-    .weather {
-      text-align: right;
-
-      .date {
-        margin-right: 10px;
-        vertical-align: middle;
-      }
-
-      .weatherDetail {
-        margin-left: 5px;
-        vertical-align: middle;
-      }
-
-      .weatherImg {
-        img {
-          height: 15px;
-        }
-      }
     }
   }
 }
