@@ -1,6 +1,7 @@
 .board-wrapper {
   padding: 20px;
 }
+
 .board-wrapper .status {
   font-size: 18px;
   font-weight: bold;
@@ -13,22 +14,22 @@
   border-left: rgb(216, 216, 216) 1px solid;
 }
 
-.board-wrapper .board-row.bt .square{
+.board-wrapper .board-row.bt .square {
   border-top: rgb(216, 216, 216) 1px solid;
 }
-
-
 
 .square {
   border-radius: 0;
   border-left: 0;
   border-top: 0;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   text-align: center;
-  line-height: 40px;
+  line-height: 60px;
   font-size: 16px;
   font-weight: bold;
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
+  border-right: rgb(216, 216, 216) 1px solid;
+  border-bottom: rgb(216, 216, 216) 1px solid;
 }

@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { Menu } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { RooteStateModel } from "@/store/reducers";
-import { setSelectKeys } from "@/store/actions";
 import styles from "./index.module.scss";
 import logo from "@/images/logo.svg";
 
@@ -53,11 +52,6 @@ const SiderMenu = (props) => {
     });
   };
 
-  const handleClick = (e) => {
-    console.log(e);
-    dispatch(setSelectKeys(e));
-  };
-
   return (
     <div className={styles.siderMenuWrapper}>
       <div className={styles.logo}>
@@ -68,9 +62,8 @@ const SiderMenu = (props) => {
         theme="dark"
         mode="inline"
         className={styles["menu-list"]}
-        onClick={handleClick}
-        defaultSelectedKeys={[selectKey]}
-        defaultOpenKeys={[openKey]}
+        selectedKeys={selectKey}
+        defaultOpenKeys={openKey}
       >
         {menuTreeNode}
       </Menu>

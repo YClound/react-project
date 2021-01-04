@@ -1,6 +1,7 @@
-import React from 'react';
-import Board from './Board'
-import './Game.css';
+import React from "react";
+import { Card } from "antd";
+import Board from "./Board";
+import "./Game.css";
 
 // 判断输赢
 function calculateWinner(squares) {
@@ -28,12 +29,14 @@ class Game extends React.Component<any, any> {
     super(props);
 
     this.state = {
-      history: [{
-        squares: Array(9).fill(null)
-      }],
+      history: [
+        {
+          squares: Array(9).fill(null),
+        },
+      ],
       xIsNext: true,
       stepNumber: 0,
-    }
+    };
   }
 
   handleClick(i) {
@@ -43,53 +46,68 @@ class Game extends React.Component<any, any> {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
-      history: history.concat([{
-        squares
-      }]),
+      history: history.concat([
+        {
+          squares,
+        },
+      ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
-    })
+      xIsNext: !this.state.xIsNext,
+    });
   }
 
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0
-    })
+      xIsNext: step % 2 === 0,
+    });
   }
 
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-   
 
     // 历史记录
     const moves = history.map((step, move) => {
-      const desc = move ? `Go to move #${move}` : 'Go to game start';
+      const desc = move ? `Go to move #${move}` : "Go to game start";
 
       return (
-        <li key={move}>
-          <button onClick={() => { this.jumpTo(move) }}>{desc}</button>
+        <li
+          key={move}
+          style={{
+            marginBottom: "8px",
+            color: this.state.stepNumber === move ? "green" : "#020202",
+          }}
+        >
+          <div
+            onClick={() => {
+              this.jumpTo(move);
+            }}
+          >
+            {desc}
+          </div>
         </li>
-      )
-    })
+      );
+    });
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = "Winner: " + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
     return (
-      <div className="game-wrapper">
+      <Card className="game-wrapper">
         <div className="game-board">
           <Board
             squares={current.squares}
-            onClick={(i) => { this.handleClick(i) }}
+            onClick={(i) => {
+              this.handleClick(i);
+            }}
           />
         </div>
 
@@ -97,10 +115,9 @@ class Game extends React.Component<any, any> {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
-      </div>
-    )
+      </Card>
+    );
   }
 }
-
 
 export default Game;

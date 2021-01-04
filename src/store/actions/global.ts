@@ -1,6 +1,7 @@
-export const setSelectKeys = (selectKeys) => {
+export const setSelectKeys = (pathname, menus) => {
   return {
     type: "SET_SELECTKEYS",
-    selectKeys,
+    pathname,
+    menus,
   };
 };

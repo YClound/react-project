@@ -1,15 +1,12 @@
 import { lazy } from "react";
 import BasicLayout from "@/layouts/BasicLayout";
 import BlankLayout from "@/layouts/BlankLayout";
-import {
-  HomeFilled,
-  SmileFilled,
-  DatabaseFilled,
-  TagFilled,
-  ApiFilled,
-  HourglassFilled,
-  PushpinFilled,
-} from "@ant-design/icons";
+import { HomeFilled, SmileFilled } from "@ant-design/icons";
+import base from "./base";
+import hook from "./hook";
+import advanced from "./advanced";
+import axios from "./axios";
+import example from "./example";
 
 const config = [
   {
@@ -46,94 +43,11 @@ const config = [
         icon: <SmileFilled />,
         component: lazy(() => import("@/pages/hello")),
       },
-      {
-        path: "/base",
-        name: "基础用法",
-        icon: <DatabaseFilled />,
-        children: [
-          {
-            path: "/base/context",
-            name: "Context",
-            component: lazy(() => import("@/pages/base/context")),
-          },
-          {
-            path: "/base/contextConsumer",
-            name: "contextConsumer",
-            component: lazy(() => import("@/pages/base/context/consumer")),
-          },
-          {
-            path: "/base/propsComp",
-            name: "propsComp",
-            component: lazy(() => import("@/pages/base/contextVsRedux/index")),
-          },
-          {
-            path: "/base/propsRedux",
-            name: "propsRedux",
-            component: lazy(
-              () => import("@/pages/base/contextVsRedux/reduxTest")
-            ),
-            hideMenu: true,
-          },
-        ],
-      },
-      {
-        name: "Hook",
-        icon: <TagFilled />,
-        path: "/hook",
-        children: [
-          {
-            path: "/hook/base",
-            name: "Hook基础",
-            component: lazy(() => import("@/pages/hook")),
-          },
-          {
-            path: "/hook/effect",
-            name: "useEffect",
-            component: lazy(() => import("@/pages/hook/UseEffectExamp")),
-          },
-        ],
-      },
-      {
-        name: "进阶",
-        icon: <ApiFilled />,
-        path: "/advanced",
-        children: [
-          {
-            path: "/advanced/hoc",
-            name: "高阶组件(HOC)",
-            component: lazy(() => import("@/pages/advanced/hoc")),
-          },
-        ],
-      },
-      {
-        path: "/example",
-        name: "示例",
-        icon: <HourglassFilled />,
-        children: [
-          {
-            path: "/example/game",
-            name: "Game",
-            component: lazy(() => import("@/pages/example/game")),
-          },
-          {
-            path: "/example/todoList",
-            name: "TodoList",
-            component: lazy(() => import("@/pages/example/todoList")),
-          },
-        ],
-      },
-      {
-        path: "/axios",
-        name: "axios用法",
-        icon: <PushpinFilled />,
-        children: [
-          {
-            path: "/axios/base",
-            name: "基本用法",
-            component: lazy(() => import("@/pages/axios")),
-          },
-        ],
-      },
+      base,
+      hook,
+      advanced,
+      example,
+      axios,
       {
         path: "*",
         component: lazy(() => import("@/pages/notFound")),

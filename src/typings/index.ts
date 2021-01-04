@@ -1,4 +1,4 @@
 export interface selectKeyModel {
-  openKey: string;
-  selectKey: string;
+  openKey: string[];
+  selectKey: string[];
 }

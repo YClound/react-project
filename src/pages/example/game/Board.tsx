@@ -1,27 +1,26 @@
-import React from 'react';
+import React from "react";
 // import Square from './Square.jsx';
-import './Game.css';
+import "./Game.css";
 
 // 函数组件
 function Square(props) {
   return (
-    <button
-      className="square"
-      onClick={props.onClick}>
+    <div className="square" onClick={props.onClick}>
       {props.value}
-    </button>
-  )
+    </div>
+  );
 }
 
 class Board extends React.Component<any, any> {
-
   renderSquare(i) {
     return (
       <Square
         value={this.props.squares[i]}
-        onClick={() => { this.props.onClick(i) }}
+        onClick={() => {
+          this.props.onClick(i);
+        }}
       />
-    )
+    );
   }
 
   render() {
@@ -43,9 +42,8 @@ class Board extends React.Component<any, any> {
           {this.renderSquare(8)}
         </div>
       </div>
-    )
+    );
   }
 }
-
 
 export default Board;
