@@ -7,6 +7,7 @@ import hook from "./hook";
 import advanced from "./advanced";
 import axios from "./axios";
 import example from "./example";
+import source from "./source";
 
 const config = [
   {
@@ -48,6 +49,7 @@ const config = [
       advanced,
       example,
       axios,
+      source,
       {
         path: "*",
         component: lazy(() => import("@/pages/notFound")),
