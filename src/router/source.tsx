@@ -20,6 +20,11 @@ const source = {
       name: "state",
       component: lazy(() => import("@/pages/source/State")),
     },
+    {
+      path: "/source/classVsFunc",
+      name: "classVsFunc",
+      component: lazy(() => import("@/pages/source/ClassVsFunc")),
+    },
   ],
 };
 
