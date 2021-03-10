@@ -24,22 +24,105 @@ class SheetJSApp extends React.Component<any, { data: any[]; cols: any[] }> {
     reader.onload = (e) => {
       /* Parse data */
       const bstr = e.target && e.target.result;
-      const wb = XLSX.read(bstr, { type: rABS ? "binary" : "array" });
+      const wb = XLSX.read(bstr, { type: rABS ? "binary" : "array", cellDates: true });
       /* Get first worksheet */
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
       /* Convert array of arrays */
-      const data = XLSX.utils.sheet_to_json(ws, { header: 1 });
+      const data = XLSX.utils.sheet_to_json(ws, { header: "A" });
       /* Update state */
-      this.setState({ data: data, cols: make_cols(ws["!ref"]) });
+      this.setState({ data: data, cols: make_cols(ws["!ref"]) }, () => {
+        console.log(this.state.data, this.state.cols, wsname, wb, ws)
+      });
     };
     if (rABS) reader.readAsBinaryString(file);
     else reader.readAsArrayBuffer(file);
   }
   exportFile() {
     /* convert state to workbook */
-    const ws = XLSX.utils.aoa_to_sheet(this.state.data);
+    console.log(this.state.data);
+    const exportList = [{
+      name: '第一列',
+      key: 'first',
+      width: 20,
+      type: 'link'
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }, {
+      name: '第二列',
+      key: 'second',
+      width: 10,
+    }]
+    const exportData = [{
+      first: 'https://www.baidu.com',
+      second: '2'
+    }, {
+      first: 'https://www.baidu.com',
+      second: '3'
+    }, {
+      first: 'https://www.baidu.com',
+      second: '4'
+    }]
+
+    let headers = exportList.map(item => item.name);
+    let data: any[][] = [headers];
+    exportData.forEach((dataItem, index) => {
+      const item: string[] = []
+      exportList.forEach(config => {
+        item.push(dataItem[config.key])
+      })
+      data.push(item);
+    })
+
+    console.log(data)
+
+    const ws = XLSX.utils.json_to_sheet(data, { cellStyles: true, skipHeader: true });
     const wb = XLSX.utils.book_new();
+    ws['A2'].l = { Target: 'https://www.baidu.com', Tooltip: 'https://www.baidu.com' }
+    ws['!cols'] = exportList.map(item => ({ width: item.width || 10 }));
+    console.log(ws, wb)
     XLSX.utils.book_append_sheet(wb, ws, "SheetJS");
     /* generate XLSX file and send to client */
     XLSX.writeFile(wb, "sheetjs.xlsx");
@@ -55,7 +138,7 @@ class SheetJSApp extends React.Component<any, { data: any[]; cols: any[] }> {
         <div className="row">
           <div className="col-xs-12">
             <button
-              disabled={!this.state.data.length}
+              // disabled={!this.state.data.length}
               className="btn btn-success"
               onClick={this.exportFile}
             >
