@@ -16,6 +16,11 @@ const example = {
       name: "TodoList",
       component: lazy(() => import("@/pages/example/todoList")),
     },
+    {
+      path: "/example/sheetjs",
+      name: "XLSX",
+      component: lazy(() => import("@/pages/example/sheetjs")),
+    },
   ],
 };
 
